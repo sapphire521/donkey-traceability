@@ -1,0 +1,6 @@
+﻿webm count: 2
+sample: C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\e2e-联盟管理-用户管理与联盟公告\video.webm
+sample size: 391893
+mapping.json exists: True
+_video_tmp exists: True
+old tmp in scripts: False

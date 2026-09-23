@@ -1,0 +1,95 @@
+[
+  {
+    "title": "登录与角色权限",
+    "text": "系统采用账号密码登录，基于角色的访问控制实现权限隔离。输入错误密码时会得到明确提示且不跳转；管理员登录后进入工作台；门店账号只能看到门店相关菜单；监管账号可以看到监管中心与预警中心，不同角色的数据边界清晰。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-登录与鉴权-admin-登录成功进入工作台\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-登录与鉴权-reg-角色可见监管中心与预警中心\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-登录与鉴权-shop-角色仅见门店相关菜单（权限隔离）\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-登录与鉴权-错误密码提示且不跳转\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-退出登录回到登录页\\video.webm"
+    ]
+  },
+  {
+    "title": "工作台总览",
+    "text": "管理员的工作台提供全链路核心指标，包括驴只存栏、批次数量、在途运输、门店库存、上链事件等统计卡，以及趋势图和预警提醒，一眼掌握全网运行状态。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-工作台统计卡与图表加载\\video.webm"
+    ]
+  },
+  {
+    "title": "联盟管理",
+    "text": "联盟管理模块负责组织与用户的治理。可以新增联盟组织、停用或启用，管理用户账号，并面向全体成员发布联盟公告，组织对应联盟链上的独立身份。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-联盟管理-用户管理与联盟公告\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-联盟管理-组织管理：列表、新增组织、停用启用\\video.webm"
+    ]
+  },
+  {
+    "title": "养殖管理",
+    "text": "养殖环节为每头肉牛建立耳标档案，新建档案会实时上链存证并返回交易标识。详情抽屉以时间轴展示饲养、免疫、检疫等全部事件，支持耳标号快速检索，出栏检疫信息同样上链。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-养殖管理-耳标号搜索过滤\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-养殖管理-驴只档案：列表、新建档案上链、详情抽屉\\video.webm"
+    ]
+  },
+  {
+    "title": "屠宰加工",
+    "text": "屠宰加工环节采用三段式批次模型：屠宰批次、加工批次、成品批次构成父子链条，创建即上链；出厂检验登记检验结论，合格后方可向下游流转。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-屠宰加工-出厂检验页面加载\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-屠宰加工-屠宰-加工-成品批次列表\\video.webm"
+    ]
+  },
+  {
+    "title": "冷链物流",
+    "text": "冷链运输全程可控。创建运输单后，车辆途中定时上报温湿度，超出阈值自动触发预警；签收后批次持有人自动变更为门店，温湿度曲线可在抽屉中回看。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-运输管理：列表与温湿度记录\\video.webm"
+    ]
+  },
+  {
+    "title": "门店管理与一物一码",
+    "text": "门店收货入库后登记产出记录，并为每份成品批量生成一物一码溯源码。溯源码绑定成品批次与门店后上链，消费者扫码即可验真，支持二维码预览、作废与扫码统计。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-溯源引擎与区块链-新业务操作实时上链：门店生成溯源码后账本区块增加\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-门店管理-产出记录：列表加载与新增\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-门店管理-库存管理列表\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-门店管理-溯源码管理：生成并绑定上链\\video.webm"
+    ]
+  },
+  {
+    "title": "溯源引擎",
+    "text": "溯源引擎是系统的核心。批次树可视化以树图呈现从成品到屠宰的完整血缘；消费者溯源报告以手机端样式展示全链路时间轴、区块链存证卡，并对每个链上事件重算哈希校验，全部通过显示已验证标识。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-溯源引擎与区块链-批次树可视化渲染\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-溯源引擎与区块链-溯源报告预览：时间轴-区块链存证卡\\video.webm"
+    ]
+  },
+  {
+    "title": "区块链账本与实时上链",
+    "text": "区块链账本提供区块浏览、交易明细与账本完整性校验。点击完整性校验，系统从创世块开始逐块重算哈希，验证通过说明链上数据未被篡改。演示新业务上链联动：门店生成溯源码后返回账本页，区块总数实时增加，验证了业务写操作与链的实时联动。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-溯源引擎与区块链-区块链账本：统计、区块浏览、完整性校验、区块详情\\video.webm"
+    ]
+  },
+  {
+    "title": "监管中心",
+    "text": "监管侧提供穿透式监管工具：证照管理带临期提醒；抽检登记不合格可联动预警；召回管理基于批次树自动分析扩散范围，一键发起召回并全程跟踪；数据大屏以暗色驾驶舱展示全链路统计与区域分布。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-监管中心-召回管理列表\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-监管中心-抽检登记列表与新增\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-监管中心-数据大屏（暗色驾驶舱）加载\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-证照管理列表与临期提示\\video.webm"
+    ]
+  },
+  {
+    "title": "预警与系统管理",
+    "text": "预警中心汇聚冷链超限等多源预警，统一处置闭环。系统管理提供操作日志审计与参数配置。最后演示退出登录，安全回到登录页。至此全部功能测试完毕。",
+    "files": [
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-系统管理-参数配置查看与修改\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-系统管理-操作日志列表\\video.webm",
+      "C:\\Users\\ZYF\\Desktop\\donkey-traceability\\admin-web\\test-results\\e2e-预警中心列表\\video.webm"
+    ]
+  }
+]

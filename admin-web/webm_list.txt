@@ -1,0 +1,11 @@
+﻿dirs: 28
+C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\.playwright-artifacts-0\page@0193cd0c58bf9f0cee39251350c79b93.webm
+C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\.playwright-artifacts-0\page@0459e388223c0f6181336f9a57d27e98.webm
+C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\.playwright-artifacts-0\page@2387ed8a676c43e8cb8bdac2fe93606e.webm
+C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\.playwright-artifacts-0\page@2bd1dd905fe71ed424798c210e3c0be8.webm
+C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\.playwright-artifacts-0\page@3535121182ed1ddb360a43c48f566891.webm
+C:\Users\ZYF\Desktop\donkey-traceability\admin-web\test-results\.playwright-artifacts-0\page@3ad7a11e6a4cb9c8613a813382ff632a.webm
+---sizes---
+page@8ba3349455059d27ad0f9b0a179186b1.webm 219880 09/18/2026 20:33:39
+video.webm 219880 09/18/2026 20:33:39
+page@f75c348232d09cc3e00abda28be6a994.webm 251870 09/18/2026 20:33:42

@@ -1,0 +1,23 @@
+# ===== 依赖与构建产物 =====
+node_modules/
+dist/
+target/
+
+# ===== 大文件交付物（不入代码仓库）=====
+交付成果/
+提交包/
+_video_tmp/
+thesis-workspace/
+
+# ===== 测试产物 =====
+admin-web/test-results/
+admin-web/playwright-report/
+
+# ===== 日志与系统文件 =====
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# ===== 工具会话目录 =====
+.workbuddy/

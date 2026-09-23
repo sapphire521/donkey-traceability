@@ -1,0 +1,29 @@
+{
+  "name": "donkeytrace-admin-web",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "驴肉火烧区块链溯源管理系统 管理端 (DonkeyTrace admin-web)",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
+    "dayjs": "^1.11.10",
+    "echarts": "^5.5.0",
+    "element-plus": "^2.7.6",
+    "pinia": "^2.1.7",
+    "vue": "^3.4.31",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@vitejs/plugin-vue": "^5.0.5",
+    "typescript": "^5.4.5",
+    "vite": "^5.3.3",
+    "vue-tsc": "^2.0.26"
+  }
+}

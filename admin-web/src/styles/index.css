@@ -1,0 +1,260 @@
+/* ============================================================
+   DonkeyTrace 驴链管理端 · 全局设计系统 v2
+   参考风格：浅色高级灰蓝内容区 + 渐变深绿侧栏/横幅（政企级 UI）
+   信任绿 #16A34A → 湖绿 #0D9488 渐变品牌；Fira 数据字体；
+   Stagger 入场动效；监管驾驶舱独立暗色主题。
+   ============================================================ */
+
+:root {
+  /* 品牌 / 信任绿 */
+  --brand: #16a34a;
+  --brand-hover: #15803d;
+  --brand-active: #166534;
+  --brand-soft: #dcfce7;
+  --brand-soft-2: #f0fdf4;
+  --teal: #0d9488;
+
+  /* 品牌渐变（按钮 / 图标章 / 激活态） */
+  --grad-brand: linear-gradient(135deg, #16a34a 0%, #0d9488 100%);
+  --grad-brand-v: linear-gradient(180deg, #16a34a 0%, #0d9488 100%);
+  /* 侧栏 / 横幅 深绿渐变 */
+  --grad-deep: linear-gradient(185deg, #0c2f22 0%, #0e3a28 46%, #115230 100%);
+  --grad-banner: linear-gradient(112deg, #0d3f27 0%, #116034 52%, #0d9488 125%);
+
+  /* 侧栏内文字 */
+  --side-text: #b7d6c5;
+  --side-text-dim: #6f9a85;
+
+  /* 文本 / 边框 / 背景 */
+  --text-1: #182234;
+  --text-2: #45566e;
+  --text-3: #8a97ab;
+  --border: #e4e9f1;
+  --border-strong: #ccd5e1;
+  --bg-page: #eef1f7;
+  --bg-card: #ffffff;
+  --bg-hover: #f6f8fb;
+
+  /* 语义色 */
+  --c-success: #16a34a;
+  --c-warning: #f59e0b;
+  --c-danger: #ef4444;
+  --c-info: #3b82f6;
+  --c-purple: #8b5cf6;
+  --c-teal: #0d9488;
+
+  /* 几何 */
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow-sm: 0 1px 2px rgba(23, 43, 77, 0.05), 0 2px 8px rgba(23, 43, 77, 0.05);
+  --shadow-md: 0 6px 20px rgba(23, 43, 77, 0.1);
+  --shadow-lg: 0 16px 48px rgba(23, 43, 77, 0.16);
+
+  /* Element Plus 主色覆盖 */
+  --el-color-primary: #16a34a;
+  --el-color-primary-light-3: #4caf6e;
+  --el-color-primary-light-5: #8fd4a6;
+  --el-color-primary-light-7: #c4ead2;
+  --el-color-primary-light-8: #dcfce7;
+  --el-color-primary-light-9: #f0fdf4;
+  --el-color-primary-dark-2: #15803d;
+  --el-border-radius-base: 8px;
+
+  --font-sans: 'Fira Sans', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif;
+  --font-mono: 'Fira Code', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* 监管驾驶舱 / 大屏 暗色主题 token */
+.theme-dark {
+  --bg-page: #0f172a;
+  --bg-card: #1b2336;
+  --bg-hover: #222c44;
+  --text-1: #f8fafc;
+  --text-2: #cbd5e1;
+  --text-3: #94a3b8;
+  --border: #27314a;
+  --border-strong: #36426a;
+  --brand: #22c55e;
+  --brand-soft: rgba(34, 197, 94, 0.16);
+  --shadow-md: 0 6px 24px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-page);
+  color: var(--text-1);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+
+/* 等宽字体工具类（txId / 码 / 编号） */
+.mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+/* ---------- 滚动条 ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c3cddb;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #a8b6c8;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ---------- 页面容器 ---------- */
+.page {
+  padding: 18px 22px 30px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.page-title {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-1);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.page-title .bar {
+  width: 4px;
+  height: 18px;
+  border-radius: 3px;
+  background: var(--grad-brand);
+}
+.page-subtitle {
+  color: var(--text-3);
+  font-size: 13px;
+  margin: 4px 0 0;
+}
+
+/* ---------- 卡片 ---------- */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+/* 浅色内容区顶部氛围光（呼应参考图的柔和空间感） */
+.layout-content-light {
+  background:
+    radial-gradient(900px 320px at 85% -80px, rgba(22, 163, 74, 0.07), transparent 65%),
+    radial-gradient(700px 300px at -60px 0px, rgba(13, 148, 136, 0.06), transparent 60%);
+}
+
+/* ---------- Stagger 入场动效 ---------- */
+@keyframes dt-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.stagger > * {
+  animation: dt-fade-up 0.42s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger > *:nth-child(4) { animation-delay: 0.22s; }
+.stagger > *:nth-child(5) { animation-delay: 0.28s; }
+.stagger > *:nth-child(6) { animation-delay: 0.34s; }
+.stagger > *:nth-child(7) { animation-delay: 0.40s; }
+.stagger > *:nth-child(8) { animation-delay: 0.46s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger > * {
+    animation: none;
+  }
+}
+
+/* ---------- 状态点 ---------- */
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.dot.green { background: var(--c-success); box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15); }
+.dot.amber { background: var(--c-warning); box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15); }
+.dot.red { background: var(--c-danger); box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15); }
+.dot.blue { background: var(--c-info); box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15); }
+.dot.gray { background: var(--text-3); box-shadow: 0 0 0 3px rgba(138, 151, 171, 0.15); }
+
+/* ---------- 文本省略 ---------- */
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 让 Element Plus 卡片/表格更紧凑专业 */
+.el-card {
+  border-radius: var(--radius) !important;
+  border-color: var(--border) !important;
+  box-shadow: var(--shadow-sm) !important;
+}
+.el-table {
+  --el-table-border-color: var(--border);
+  font-size: 13px;
+}
+.el-table th.el-table__cell {
+  background: var(--bg-hover) !important;
+  color: var(--text-2);
+  font-weight: 600;
+}
+.el-button--primary {
+  background: var(--grad-brand);
+  border: none;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.28);
+}
+.el-button--primary:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.36);
+}
+.el-dialog {
+  border-radius: var(--radius) !important;
+}

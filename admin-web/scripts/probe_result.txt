@@ -1,0 +1,4 @@
+﻿PY: C:\Users\ZYF\.workbuddy\binaries\python\envs\default\Scripts\python.exe
+OK: edge_tts, imageio_ffmpeg, PIL
+MISSING: none
+
