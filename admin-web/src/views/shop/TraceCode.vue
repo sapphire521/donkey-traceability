@@ -40,14 +40,10 @@
 
     <el-dialog v-model="qrDialog" title="溯源码二维码" width="360px" align-center>
       <div v-if="qrCurrent" class="qr-wrap">
-        <div class="qr-box">
-          <div class="qr-grid">
-            <span v-for="n in 144" :key="n" :class="{ on: qrPattern[n - 1] }"></span>
-          </div>
-        </div>
+        <img :src="qrImg" alt="溯源码二维码" class="qr-img" />
         <div class="qr-code mono">{{ qrCurrent.code }}</div>
         <div class="qr-url mono">{{ qrCurrent.url }}</div>
-        <el-tag type="success" size="small">活码链接 · 扫码直达 H5 溯源报告</el-tag>
+        <el-tag type="success" size="small">活码链接 · 手机扫码直达 H5 溯源报告（免登录）</el-tag>
       </div>
     </el-dialog>
   </div>
@@ -56,6 +52,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { Plus } from '@element-plus/icons-vue'
+import QRCode from 'qrcode'
 import { http } from '@/utils/request'
 import { ElMessage } from 'element-plus'
 import { codeStatusMap, tagOf } from '@/utils/format'
@@ -65,12 +62,18 @@ const loading = ref(false)
 const genDialog = ref(false); const qrDialog = ref(false)
 const genForm = ref({ batchNo: '', shopOrgName: '', outputId: 1, count: 10 })
 const qrCurrent = ref<any>(null)
-const qrPattern = ref<boolean[]>([])
+const qrImg = ref('')
 
 async function load() { loading.value = true; const r = await http.get('/shop/trace-codes', { page: 1, size: 50 }); list.value = r.records; loading.value = false }
 function openGen() { genForm.value = { batchNo: '', shopOrgName: '', outputId: 1, count: 10 }; genDialog.value = true }
 async function submitGen() { const arr = await http.post('/shop/trace-codes', genForm.value); ElMessage.success(`已生成 ${arr.length} 个溯源码并绑定上链`); genDialog.value = false; load() }
-async function showQr(row: any) { const r = await http.get(`/shop/trace-codes/${row.id}/qrcode`); qrCurrent.value = { code: row.code, url: r.url }; qrPattern.value = Array.from({ length: 144 }, () => Math.random() > 0.5); qrDialog.value = true }
+async function showQr(row: any) {
+  // 活码：当前部署站点 + H5 溯源页（免登录），线上/本地均可用
+  const url = `${location.origin}${location.pathname}#/s/${row.code}`
+  qrCurrent.value = { code: row.code, url }
+  qrImg.value = await QRCode.toDataURL(url, { width: 520, margin: 1, errorCorrectionLevel: 'M', color: { dark: '#0f172a', light: '#ffffff' } })
+  qrDialog.value = true
+}
 function print(row: any) { ElMessage.success(`已发送打印任务：${row.code}（标签 60×40mm）`) }
 
 onMounted(load)
@@ -78,10 +81,7 @@ onMounted(load)
 
 <style scoped>
 .qr-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 8px; }
-.qr-box { width: 180px; height: 180px; padding: 12px; background: #fff; border-radius: 12px; box-shadow: var(--shadow-md); display: grid; place-items: center; }
-.qr-grid { width: 156px; height: 156px; display: grid; grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(12, 1fr); gap: 1px; }
-.qr-grid span { background: #eef2f7; border-radius: 1px; }
-.qr-grid span.on { background: #0f172a; }
+.qr-img { width: 200px; height: 200px; border-radius: 12px; box-shadow: var(--shadow-md); background: #fff; }
 .qr-code { font-weight: 600; color: var(--text-1); letter-spacing: 1px; }
 .qr-url { font-size: 11px; color: var(--text-3); word-break: break-all; text-align: center; }
 </style>

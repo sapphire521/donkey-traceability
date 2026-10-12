@@ -280,11 +280,15 @@ add('POST', '/shop/trace-codes', (ctx) => {
 add('GET', '/shop/trace-codes', (ctx) => paginate(db.traceCodes, ctx.query))
 add('GET', '/shop/trace-codes/:id/qrcode', (ctx) => {
   const c = db.traceCodes.find(x => x.id === +ctx.params.id); if (!c) throw new Error('码不存在')
-  return { code: c.code, url: 'https://trace.donkeychain.cn/t/' + c.code }
+  return { code: c.code, url: location.origin + location.pathname + '#/s/' + c.code }
 })
 
 // ---------- 溯源 ----------
-add('GET', '/trace/codes/:code', (ctx) => buildTraceReport(ctx.params.code))
+add('GET', '/trace/codes/:code', (ctx) => {
+  const tc = db.traceCodes.find(x => x.code === ctx.params.code)
+  if (tc) tc.scanTimes++ // 扫码次数统计
+  return buildTraceReport(ctx.params.code)
+})
 add('POST', '/trace/codes/:code/complaint', (ctx) => {
   db.complaints.unshift({ id: db.complaints.length + 100, code: ctx.params.code, ...ctx.body, status: 'PENDING', createTime: now() })
   chain.appendTx('AddComplaint', { code: ctx.params.code, category: ctx.body.category }, 'OrgPlatformMSP', '消费者投诉', now())

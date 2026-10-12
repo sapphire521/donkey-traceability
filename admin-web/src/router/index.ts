@@ -6,6 +6,8 @@ import { useAppStore } from '@/stores/app'
 
 const routes: RouteRecordRaw[] = [
   { path: '/login', name: 'Login', component: () => import('@/views/login/Login.vue'), meta: { public: true, title: '登录' } },
+  // 扫码溯源 H5（免登录，手机端直达）
+  { path: '/s/:code', name: 'ScanResult', component: () => import('@/views/h5/ScanResult.vue'), meta: { public: true, title: '溯源查询' } },
   {
     path: '/',
     component: Layout,
