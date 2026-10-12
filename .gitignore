@@ -21,3 +21,4 @@ Thumbs.db
 
 # ===== 工具会话目录 =====
 .workbuddy/
+dist-mock/

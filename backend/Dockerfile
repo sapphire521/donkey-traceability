@@ -2,6 +2,8 @@
 # 供 Render / Railway / 本地 docker build 使用
 FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
+# Maven 走阿里云镜像加速依赖下载(国内网络构建提速)
+COPY maven-settings-aliyun.xml /root/.m2/settings.xml
 COPY pom.xml .
 RUN mvn -q dependency:go-offline
 COPY src ./src
