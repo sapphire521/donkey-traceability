@@ -126,10 +126,19 @@ function genCode(): string {
   for (let i = 0; i < 14; i++) s += codeChars[Math.floor(Math.random() * codeChars.length)]
   return 'DT' + s
 }
+// 由序号确定性生成溯源码：跨设备/跨会话结果一致，保证手机扫码能查到（mock 库每次加载重建）
+// 样式：固定前缀(10 位观感随机) + 4 位流水号，一物一码
+function codeFromIndex(n: number): string {
+  const s: string[] = []
+  for (let i = 0; i < 10; i++) s.push(codeChars[(i * 13 + 5) % codeChars.length])
+  let x = 1000 + n
+  for (let i = 0; i < 4; i++) { s.push(codeChars[x % codeChars.length]); x = Math.floor(x / codeChars.length) }
+  return 'DT' + s.join('')
+}
 export const traceCodes: TraceCode[] = []
 outputRecords.forEach((o, oi) => {
   for (let k = 0; k < (oi === 0 ? 10 : 6); k++) {
-    traceCodes.push({ id: nid(), code: genCode(), batchNo: o.batchNo, shopOrgName: o.shopOrgName, outputId: o.id, status: 'BOUND', bindTxid: '0xbc' + oi + k, printCount: 1, scanTimes: Math.floor(Math.random() * 8), createTime: '2026-09-11 18:25:00' })
+    traceCodes.push({ id: nid(), code: codeFromIndex(100 + oi * 100 + k), batchNo: o.batchNo, shopOrgName: o.shopOrgName, outputId: o.id, status: 'BOUND', bindTxid: '0xbc' + oi + k, printCount: 1, scanTimes: Math.floor(Math.random() * 8), createTime: '2026-09-11 18:25:00' })
   }
 })
 // 一个已作废码 + 一个待测
